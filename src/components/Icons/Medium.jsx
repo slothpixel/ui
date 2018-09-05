@@ -1,10 +1,9 @@
 import React from 'react';
 
 export default props => (
-  <svg {...props} viewBox="0 0 300 300">
+  <svg {...props} viewBox="0 0 150 150">
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="Monogram" fillRule="nonzero">
-        <rect id="Rectangle-path" fill="#12100E" x="0" y="0" width="195" height="195"/>
         <path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582
          L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011
          C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114
