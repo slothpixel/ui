@@ -1,7 +1,9 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 import Home from '../Home';
 import Footer from '../Footer';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import constants from '../constants';
 
@@ -27,6 +29,14 @@ const StyledBodyDiv = styled.div`
 `;
 
 class App extends React.Component {
+  static propTypes = {
+    params: PropTypes.shape({}),
+    width: PropTypes.number,
+    location: PropTypes.shape({
+      key: PropTypes.string,
+    }),
+    strings: PropTypes.shape({}),
+  };
 
   render() {
     const {
@@ -34,7 +44,7 @@ class App extends React.Component {
     } = this.props;
     return (
       <StyledDiv {...this.props}>
-        <StyledBodyDiv>
+        <StyledBodyDiv {...this.props}>
           <Switch>
             <Route exact path="/" component={Home}/>
           </Switch>
@@ -45,4 +55,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  strings: state.app.strings,
+});
+
+export default connect(mapStateToProps)(App);

@@ -1,5 +1,6 @@
 import React from 'react';
-//import Buttons from './Buttons';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Why from './Why';
 import HomeSearch from './HomeSearch';
 import { HeadContainerDiv, HeadlineDiv, DescriptionDiv } from './Styled';
@@ -8,7 +9,7 @@ const Home = ({ strings }) => (
   <div>
     <HeadContainerDiv>
       <HeadlineDiv>
-        {'Slothpixel.me'}
+        {strings.app_name}
       </HeadlineDiv>
       <DescriptionDiv>
         {'Open source Hypixel data platform'}
@@ -20,4 +21,12 @@ const Home = ({ strings }) => (
   </div>
 );
 
-export default Home;
+Home.propTypes = {
+  strings: PropTypes.shape({}),
+};
+
+const mapStateToProps = state => ({
+  strings: state.app.strings,
+});
+
+export default connect(mapStateToProps)(Home);

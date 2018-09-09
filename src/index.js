@@ -1,13 +1,15 @@
 import React from 'react';
 import createHistory from 'history/createBrowserHistory';
-import {hydrate, render} from 'react-dom';
-import {Route, Router} from 'react-router-dom';
-import {Provider} from 'react-redux';
+import { hydrate, render } from 'react-dom';
+import { Route, Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import ReactGA from 'react-ga';
-import App from './components/App';
+import store from './store';
+import { getStrings } from './actions';
 import { injectGlobal } from 'styled-components';
 import constants from './components/constants';
-import registerServiceWorker from './registerServiceWorker';
+import App from './components/App';
+import { unregister } from './registerServiceWorker';
 
 // Inject global styles
 injectGlobal([`
@@ -132,6 +134,9 @@ li {
 }
 `]);
 
+// Fetch strings
+store.dispatch(getStrings());
+
 ReactGA.initialize('UA-000000-01');
 ReactGA.pageview(window.location.pathname + window.location.search);
 const history = createHistory();
@@ -141,7 +146,7 @@ history.listen((location) => {
 
 const rootElement = document.getElementById('root');
 const app = (
-  <Provider store="">
+  <Provider store={store}>
     <Router history={history}>
       <Route component={App}/>
     </Router>
@@ -152,4 +157,5 @@ if (rootElement.hasChildNodes()) {
   hydrate(app, rootElement);
 }
 
-registerServiceWorker();
+// registerServiceWorker();
+unregister();
