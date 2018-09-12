@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import {IconOpenSource, IconStats, IconCompass} from '../Icons';
+import { IconOpenSource, IconStats, IconCompass } from '../Icons';
 import constants from '../constants';
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 
 const StyledDiv = styled.div`
   margin: 50px auto 0;
@@ -41,37 +43,37 @@ const StyledDiv = styled.div`
   }
 `;
 
-const Why = ({strings}) => (
+const Why = ({ strings }) => (
   <StyledDiv>
     <div className="whyList">
       <div className="whyElement">
         <IconOpenSource />
         <div className="headline">
-          {'Open Source'}
+          {strings.home_opensource_title}
         </div>
         <div className="description">
-          {'All project code is open source and available for contributors to improve and modify.'}
+          {strings.home_opensource_desc}
         </div>
       </div>
       <div className="whyElement">
         <IconStats />
         <div className="headline">
-          {'In-Depth Data'}
+          {strings.home_indepth_title}
         </div>
         <div className="description">
-          {'Slothpixel.me provides highly detailed data from players, guilds and boosters.'}
+          {strings.home_indepth_desc}
         </div>
       </div>
       <div className="whyElement">
         <IconCompass />
         <div className="headline">
-          {'Match Tracking'}
+          {strings.home_tracking_title}
         </div>
         <div className="description">
-          {'Forge mod to collect advanced data from played matches.'}
+          {strings.home_tracking_desc}
         <p>
           <b>
-            {'Coming Soon'}
+            {strings.home_coming_soon}
           </b>
         </p>
         </div>
@@ -80,4 +82,12 @@ const Why = ({strings}) => (
   </StyledDiv>
 );
 
-export default Why;
+Why.propTypes = {
+  strings: PropTypes.shape({}),
+};
+
+const mapStateToProps = state => ({
+  strings: state.strings,
+});
+
+export default connect(mapStateToProps)(Why);

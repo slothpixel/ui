@@ -1,17 +1,19 @@
 import React from 'react';
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 
 const PageLinks = ({ strings }) => {
   const links = [{
-    name: 'About',
+    name: strings.app_about,
     path: '',
   }, {
-    name: 'Privacy & Terms',
+    name: strings.app_privacy_terms,
     path: '',
   }, {
-    name: 'API Docs',
+    name: strings.app_api_docs,
     path: '',
   }, {
-    name: 'Blog',
+    name: strings.app_blog,
     path: '//medium.com/slothpixel',
   }];
   return links.map(link => (
@@ -19,4 +21,12 @@ const PageLinks = ({ strings }) => {
   ));
 };
 
-export default PageLinks;
+PageLinks.propTypes = {
+  strings: PropTypes.shape({}),
+};
+
+const mapStateToProps = state => ({
+  strings: state.strings,
+});
+
+export default connect(mapStateToProps)(PageLinks);

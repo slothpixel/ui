@@ -12,10 +12,9 @@ const Home = ({ strings }) => (
         {strings.app_name}
       </HeadlineDiv>
       <DescriptionDiv>
-        {'Open source Hypixel data platform'}
+        {strings.app_description}
       </DescriptionDiv>
       <HomeSearch/>
-      {/*<Buttons />*/}
     </HeadContainerDiv>
     <Why />
   </div>
@@ -26,7 +25,7 @@ Home.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  strings: state.app.strings,
+  strings: state.strings,
 });
 
 export default connect(mapStateToProps)(Home);

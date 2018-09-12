@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import constants from '../constants';
 import SocialLinks from './SocialLinks';
 import PageLinks from './PageLinks';
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 
 const StyledFooter = styled.footer`
   & main {
@@ -121,11 +123,11 @@ const Footer = ({ strings }) => (
     <main>
       <div className="links">
         <div className="logoNsocial">
-          <h3>Slothpixel.me</h3>
+          <h3>{strings.app_name}</h3>
           <SocialLinks strings={strings} />
         </div>
         <small className="about">
-          {'Open source Hypixel stats platform'}
+          {strings.app_description}
         </small>
         <StyledHr />
         <div className="pages">
@@ -136,4 +138,12 @@ const Footer = ({ strings }) => (
   </StyledFooter>
 );
 
-export default Footer;
+Footer.propTypes = {
+  strings: PropTypes.shape({}),
+};
+
+const mapStateToProps = state => ({
+  strings: state.strings,
+});
+
+export default connect(mapStateToProps)(Footer);

@@ -3,19 +3,19 @@ import { IconGithub, IconDiscord, IconTwitter, IconMedium } from '../Icons';
 
 export default ({ strings }) => {
   const links = [{
-    tooltip: 'Github',
+    tooltip: strings.app_github,
     path: '//github.com/slothpixel',
     icon: <IconGithub />,
   }, {
-    tooltip: 'Discord',
-    path: '//discord.gg/opendota',
+    tooltip: strings.app_discord,
+    path: '//discord.gg/ND9bJKK',
     icon: <IconDiscord />,
   }, {
-    tooltip: 'oof',
+    tooltip: strings.app_twitter,
     path: '//twitter.com/slothpixel_me',
     icon: <IconTwitter/>
   }, {
-    tooltip: 'Medium',
+    tooltip: strings.app_medium,
     path: '//medium.com/slothpixel',
     icon: <IconMedium/>
   }];

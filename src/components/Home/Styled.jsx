@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import constants from '../constants';
 
 export const HeadContainerDiv = styled.div`
-  width: 600px;
+  width: 650px;
   height: 480px;
   margin: 0 auto;
   text-align: center;
