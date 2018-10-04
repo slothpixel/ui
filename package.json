@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "history": "^4.7.2",
+    "material-ui": "^0.20.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -16,7 +17,7 @@
     "styled-components": "^3.4.5"
   },
   "devDependencies": {
-    "react-scripts": "1.1.5"
+    "react-scripts": "2.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
