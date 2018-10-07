@@ -1,11 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../Home';
+import Header from '../Header';
 import Footer from '../Footer';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import constants from '../constants';
+
+const muiTheme = {
+  fontFamily: constants.fontFamily,
+  card: { fontWeight: constants.fontWeightNormal },
+  badge: { fontWeight: constants.fontWeightNormal },
+  subheader: { fontWeight: constants.fontWeightNormal },
+  raisedButton: { fontWeight: constants.fontWeightNormal },
+  flatButton: { fontWeight: constants.fontWeightNormal },
+  inkBar: {
+    backgroundColor: constants.colorBlue,
+  },
+  palette: {
+    textColor: constants.textColorPrimary,
+    primary1Color: constants.colorBlue,
+    canvasColor: constants.primarySurfaceColor,
+    borderColor: constants.dividerColor,
+  },
+  tabs: {
+    backgroundColor: 'transparent',
+    textColor: constants.colorMuted,
+    selectedTextColor: constants.textColorPrimary,
+  },
+  button: { height: 38 },
+};
 
 const StyledDiv = styled.div`
   transition: ${constants.normalTransition};
@@ -43,14 +71,17 @@ class App extends React.Component {
       params, width, location, strings,
     } = this.props;
     return (
-      <StyledDiv {...this.props}>
-        <StyledBodyDiv {...this.props}>
-          <Switch>
-            <Route exact path="/" component={Home}/>
-          </Switch>
-        </StyledBodyDiv>
-        <Footer location={location} width={width}/>
-      </StyledDiv>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme, muiTheme)}>
+        <StyledDiv {...this.props}>
+          <Header/>
+          <StyledBodyDiv {...this.props}>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+            </Switch>
+          </StyledBodyDiv>
+          <Footer location={location} width={width}/>
+        </StyledDiv>
+      </MuiThemeProvider>
     )
   }
 }

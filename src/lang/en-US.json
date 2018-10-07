@@ -1,6 +1,7 @@
 {
   "app_name": "Slothpixel.me",
   "app_localization": "Localization",
+  "app_language": "Language",
   "app_description": "Open source Hypixel data platform",
   "app_about": "About",
   "app_privacy_terms": "Privacy & Terms",
@@ -22,5 +23,7 @@
   "home_indepth_desc": "Slothpixel.me provides highly detailed data from players, guilds and boosters.",
   "home_tracking_title": "Match Tracking",
   "home_tracking_desc": "Forge mod to collect advanced data from played matches.",
-  "home_coming_soon": "Coming Soon"
+  "home_coming_soon": "Coming Soon",
+
+  "search_title": "Player Search"
 }

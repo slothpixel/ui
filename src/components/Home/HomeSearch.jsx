@@ -16,7 +16,7 @@ HomeSearch.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  strings: state.strings,
+  strings: state.app.strings,
 });
 
 export default connect(mapStateToProps)(HomeSearch);

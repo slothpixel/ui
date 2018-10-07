@@ -1,0 +1,81 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import MenuItem from 'material-ui/MenuItem';
+import Next from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
+import styled from 'styled-components';
+import { langs } from '../../lang';
+import constants from '../constants';
+
+const ClickableDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  transition: ${constants.linearTransition};
+  padding-right: 10px;
+`;
+
+const LanguageContainerDiv = styled.div`
+  max-height: 300px;
+  overflow: auto;
+`;
+
+const getLocalization = window.localStorage.getItem('localization');
+
+const setLocalization = (event, key, payload) => {
+  window.localStorage.setItem('localization', payload.value);
+  window.location.reload();
+};
+
+class LocalizationMenuItems extends Component {
+  constructor() {
+    super();
+    this.state = {
+      open: false,
+    };
+  }
+
+  handleOnClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    this.setState({
+      open: !this.state.open,
+    });
+  };
+
+  render() {
+    const { strings } = this.props;
+    const { open } = this.state;
+    return (
+      <div style={{ minWidth: '200px' }}>
+        <ClickableDiv
+          onClick={this.handleOnClick}
+        >
+          {strings.app_language} <Next />
+        </ClickableDiv>
+        <LanguageContainerDiv>
+          {open && langs.map(lang => (<MenuItem
+            style={{
+              color: lang.value === getLocalization && constants.colorGolden,
+            }}
+            key={lang.translated}
+            value={lang.value}
+            primaryText={lang.native}
+            onClick={() => setLocalization(null, null, lang)}
+          />))}
+        </LanguageContainerDiv>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  strings: state.strings,
+});
+
+LocalizationMenuItems.propTypes = {
+  strings: PropTypes.shape({}),
+};
+
+export default connect(mapStateToProps, null)(LocalizationMenuItems);
