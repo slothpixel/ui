@@ -18,10 +18,10 @@ const StyledLink = styled(Link)`
 
 const AppLogo = ({ style, strings }) => (
   <StyledLink to="/" style={style}>
-      <img
-        src="/assets/logo_x16.png"
-        style={style}
-      />
+    <img
+      src="/assets/logo_x16.png"
+      style={style}
+    />
   </StyledLink>
 );
 

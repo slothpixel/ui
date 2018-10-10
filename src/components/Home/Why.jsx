@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { IconOpenSource, IconStats, IconCompass } from '../Icons';
 import constants from '../constants';
-import PropTypes from "prop-types";
-import { connect } from 'react-redux';
 
 const StyledDiv = styled.div`
   margin: 50px auto 0;
@@ -71,11 +71,11 @@ const Why = ({ strings }) => (
         </div>
         <div className="description">
           {strings.home_tracking_desc}
-        <p>
-          <b>
-            {strings.home_coming_soon}
-          </b>
-        </p>
+          <p>
+            <b>
+              {strings.home_coming_soon}
+            </b>
+          </p>
         </div>
       </div>
     </div>

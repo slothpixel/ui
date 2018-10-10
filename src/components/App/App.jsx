@@ -4,11 +4,12 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import Player from '../Player';
 import constants from '../constants';
 
 const muiTheme = {
@@ -73,16 +74,16 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme, muiTheme)}>
         <StyledDiv {...this.props}>
-          <Header/>
+          <Header />
           <StyledBodyDiv {...this.props}>
             <Switch>
-              <Route exact path="/" component={Home}/>
+              <Route exact path="/" component={Home} />
             </Switch>
           </StyledBodyDiv>
-          <Footer location={location} width={width}/>
+          <Footer location={location} width={width} />
         </StyledDiv>
       </MuiThemeProvider>
-    )
+    );
   }
 }
 

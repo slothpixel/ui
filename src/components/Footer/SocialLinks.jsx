@@ -1,5 +1,7 @@
 import React from 'react';
-import { IconGithub, IconDiscord, IconTwitter, IconMedium } from '../Icons';
+import {
+  IconGithub, IconDiscord, IconTwitter, IconMedium,
+} from '../Icons';
 
 export default ({ strings }) => {
   const links = [{
@@ -13,11 +15,11 @@ export default ({ strings }) => {
   }, {
     tooltip: strings.app_twitter,
     path: '//twitter.com/slothpixel_me',
-    icon: <IconTwitter/>
+    icon: <IconTwitter />,
   }, {
     tooltip: strings.app_medium,
     path: '//medium.com/slothpixel',
-    icon: <IconMedium/>
+    icon: <IconMedium />,
   }];
 
   return links.map(link => (

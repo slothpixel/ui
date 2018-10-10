@@ -10,7 +10,7 @@ import Bug from 'material-ui/svg-icons/action/bug-report';
 import LogOutButton from 'material-ui/svg-icons/action/power-settings-new';
 import styled from 'styled-components';
 import LocalizationMenu from '../Localization';
-import Dropdown from '../Header/Dropdown';
+import Dropdown from './Dropdown';
 import constants from '../constants';
 import SearchForm from '../Search/SearchForm';
 import AppLogo from '../App/AppLogo';
@@ -88,12 +88,12 @@ class Header extends React.Component {
       location, small, user, strings,
     } = this.props;
     const navbarPages = [
-      <Link key="header_stats" to="/player">{'Stats'}</Link>,
-      <Link key="header_guild" to="/guild">{'Guild'}</Link>,
+      <Link key="header_player" to="/player">Player</Link>,
+      <Link key="header_guild" to="/guild">Guild</Link>,
     ];
 
     const burgerItems = [
-      //<AccountWidget key={0} />,
+      // <AccountWidget key={0} />,
       ...navbarPages,
     ];
 
@@ -107,9 +107,10 @@ class Header extends React.Component {
         <AppLogo
           style={{
             height: 56,
-            width: 56
+            width: 56,
           }}
-          strings={strings} />
+          strings={strings}
+        />
       </VerticalAlignToolbar>
     );
 
@@ -138,7 +139,7 @@ class Header extends React.Component {
 
     const AccountGroup = () => (
       <VerticalAlignToolbar>
-        {/*<AccountWidget />*/}
+        {/* <AccountWidget /> */}
       </VerticalAlignToolbar>
     );
 
@@ -193,7 +194,7 @@ class Header extends React.Component {
             <SearchGroup />
           </VerticalAlignDiv>
           <VerticalAlignDiv style={{ marginLeft: 'auto' }}>
-            {/*small && <AccountGroup />*/}
+            {/* small && <AccountGroup /> */}
             <SettingsGroup user={user} />
           </VerticalAlignDiv>
         </ToolbarHeader>

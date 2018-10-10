@@ -2,7 +2,7 @@ import {
   createStore,
   applyMiddleware,
   combineReducers,
-  compose
+  compose,
 } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {

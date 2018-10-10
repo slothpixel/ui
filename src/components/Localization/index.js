@@ -52,18 +52,22 @@ class LocalizationMenuItems extends Component {
         <ClickableDiv
           onClick={this.handleOnClick}
         >
-          {strings.app_language} <Next />
+          {strings.app_language}
+          {' '}
+          <Next />
         </ClickableDiv>
         <LanguageContainerDiv>
-          {open && langs.map(lang => (<MenuItem
-            style={{
-              color: lang.value === getLocalization && constants.colorGolden,
-            }}
-            key={lang.translated}
-            value={lang.value}
-            primaryText={lang.native}
-            onClick={() => setLocalization(null, null, lang)}
-          />))}
+          {open && langs.map(lang => (
+            <MenuItem
+              style={{
+                color: lang.value === getLocalization && constants.colorGolden,
+              }}
+              key={lang.translated}
+              value={lang.value}
+              primaryText={lang.native}
+              onClick={() => setLocalization(null, null, lang)}
+            />
+          ))}
         </LanguageContainerDiv>
       </div>
     );

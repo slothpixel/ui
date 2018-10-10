@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import constants from '../constants';
 import SocialLinks from './SocialLinks';
 import PageLinks from './PageLinks';
-import PropTypes from "prop-types";
-import { connect } from 'react-redux';
 
 const StyledFooter = styled.footer`
   & main {
