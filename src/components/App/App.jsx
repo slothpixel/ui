@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Helmet from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -69,11 +70,15 @@ class App extends React.Component {
 
   render() {
     const {
-      params, width, location, strings,
+      width, location, strings,
     } = this.props;
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme, muiTheme)}>
         <StyledDiv {...this.props}>
+          <Helmet
+            defaultTitle={strings.title_default}
+            titleTemplate={strings.title_template}
+          />
           <Header />
           <StyledBodyDiv {...this.props}>
             <Switch>
@@ -89,7 +94,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  strings: state.strings,
+  strings: state.app.strings,
 });
 
 export default connect(mapStateToProps)(App);
