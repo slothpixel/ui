@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { connect } from 'react-redux';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -155,7 +156,7 @@ class App extends React.Component {
             </Switch>
           </StyledBodyDiv>
           <Footer location={location} width={width} />
-          <button ref={this.setBack2TopRef} id="back2Top" title={strings.back2Top} onClick={this.handleBack2TopClick}>
+          <button ref={this.setBack2TopRef} id="back2Top" title={strings.back2Top} onClick={this.handleBack2TopClick} type="button">
             <div>&#9650;</div>
             <div id="back2TopTxt">{strings.back2Top}</div>
           </button>

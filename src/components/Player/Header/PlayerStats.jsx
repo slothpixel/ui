@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Error from '../../Error';
 import Spinner from '../../Spinner';
-import { addCommas } from '../../../utility';
+import addCommas from '../../../utility';
 import { PlayerStatsCard } from './Styled';
 import constants from '../../constants';
 

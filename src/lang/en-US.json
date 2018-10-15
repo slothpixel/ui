@@ -43,5 +43,7 @@
   "th_last_login": "Last Login",
 
   "title_default": "Slothpixel - Hypixel Statistics",
-  "title_template": "%s - Slothpixel - Hypixel Statistics"
+  "title_template": "%s - Slothpixel - Hypixel Statistics",
+
+  "general_anonymous": "Anonymous"
 }

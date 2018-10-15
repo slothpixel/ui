@@ -21,9 +21,9 @@ class RequestLayer extends React.Component {
     history: PropTypes.shape({
       push: PropTypes.func,
     }),
-    officialPlayerName: PropTypes.string,
-    playerName: PropTypes.string,
+    loading: PropTypes.bool,
     strings: PropTypes.shape({}),
+    player: PropTypes.shape({}),
   };
 
   componentDidMount() {
@@ -41,19 +41,20 @@ class RequestLayer extends React.Component {
   }
 
   render() {
-    const { location, match, strings } = this.props;
-    const { playerId } = this.props.match.params;
-    const info = match.params.info || 'overview';
+    const {
+      location, match, strings, loading, player,
+    } = this.props;
+    const { playerId } = match.params;
+    // const info = match.params.info || 'overview';
     // const page = playerPages(playerId, strings).find(_page => _page.key === info);
-    const playerName = this.props.officialPlayerName || this.props.playerName || strings.general_anonymous;
+    const playerName = player.username || playerId || strings.general_anonymous;
     const title = playerName;
-    if (this.props.loading) return null;
+    if (loading) return null;
     return (
       <div>
         <Helmet title={title} />
         <div>
-          <PlayerHeader />
-          <p>{JSON.stringify(this.props.player)}</p>
+          <PlayerHeader location={location} />
         </div>
       </div>
     );
