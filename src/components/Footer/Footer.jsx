@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -83,14 +84,6 @@ const StyledFooter = styled.footer`
             }
           }
         }
-      }
-    }
-    & .cheese {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      & > div:first-of-type {
-        margin-right: 20px;
       }
     }
     & .SocialLinks a {

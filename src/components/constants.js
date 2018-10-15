@@ -2,11 +2,24 @@ export default {
   defaultPrimaryColor: 'rgba(0, 0, 0, 0.4)',
   darkPrimaryColor: 'rgba(0, 0, 0, 0.6)',
   almostBlack: 'rgba(0, 0, 0, 0.9)',
+  colorBlack: '#000000', // &0
+  colorDarkBlue: '#0000AA', // &1
+  colorDarkGreen: '#00AA00', // &2
+  colorDarkAqua: '#00AAAA', // &3
+  colorDarkRed: '#AA0000', // &4
+  colorDarkPurple: '#AA00AA', // &5
+  colorGold: '#FFAA00', // &6
+  colorGray: '#AAAAAA', // &7
+  colorDarkGray: '#555555', // &8
+  colorBlue: '#5555FF', // &9
+  colorGreen: '#55FF55', // &a
+  colorAqua: '#55FFFF', // &b
+  colorRed: '#FF5555', // &c
+  colorLightPurple: '#FF55FF', // &d
+  colorYellow: '#FFFF55', // &e
+  colorWhite: '#FFFFFF', // &f
   colorSuccess: '#66BB6A',
   colorDanger: '#ff4c4c',
-  colorGreen: '#66BB6A',
-  colorRed: '#ff4c4c',
-  colorBlue: '#6BF',
   colorMuted: '#727272',
   colorYelor: '#FFAB40',
   colorGolden: '#e5c100',
@@ -34,24 +47,6 @@ export default {
   tableHeaderSurfaceColor: 'rgba(0, 0, 0, .3)',
   tableRowOddSurfaceColor: 'rgba(255, 255, 255, .019)',
   tableRowEvenSurfaceColor: 'rgba(0, 0, 0, .019)',
-  colorDivine: 'rgba(33, 41, 69, 0.45)',
-  colorDivineAlt: 'rgba(33, 41, 69, 0.65)',
-  colorAncient: 'rgba(82, 52, 91, 0.45)',
-  colorAncientAlt: 'rgba(82, 52, 91, 0.65)',
-  colorLegend: 'rgba(84, 60, 26, 0.45)',
-  colorLegendAlt: 'rgba(84, 60, 26, 0.65)',
-  colorArchon: 'rgba(24, 85, 74, 0.45)',
-  colorArchonAlt: 'rgba(24, 85, 74, 0.65)',
-  colorCrusader: 'rgba(58, 73, 124, 0.45)',
-  colorCrusaderAlt: 'rgba(58, 73, 124, 0.65)',
-  colorGuardian: 'rgba(114, 79, 49, 0.45)',
-  colorGuardianAlt: 'rgba(114, 79, 49, 0.65)',
-  colorHerald: 'rgba(32, 74, 33, 0.45)',
-  colorHeraldAlt: 'rgba(32, 74, 33, 0.65)',
-  colorAttributeStr: '#f44336',
-  colorAttributeAgi: '#39d402',
-  colorAttributeInt: '#01a9f4',
-  colorMana: '#578dca',
   sliderTicksColor: '#757575',
   sliderTicksColorActive: '#337AB7',
   dividerColor: 'rgb(52, 50, 50)',

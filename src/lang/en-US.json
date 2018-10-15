@@ -25,5 +25,20 @@
   "home_tracking_desc": "Forge mod to collect advanced data from played matches.",
   "home_coming_soon": "Coming Soon",
 
-  "search_title": "Player Search"
+  "search_title": "Player Search",
+
+  "th_level": "Level",
+  "th_achievements": "Achievements",
+  "th_quests": "Quests",
+  "th_wins_total": "Total Wins",
+  "th_kills_total": "Total Kills",
+  "th_karma": "Karma",
+  "th_coins_current": "Current Coins",
+  "th_friends": "Friends",
+  "th_guild": "Guild",
+  "th_session": "Session",
+  "th_session_online": "Online",
+  "th_session_offline": "Offline",
+  "th_first_login": "First Login",
+  "th_last_login": "Last Login"
 }

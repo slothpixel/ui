@@ -28,7 +28,7 @@ const StyledDiv = styled.div`
       & svg {
         width: 85px;
         height: 85px;
-        fill: ${constants.colorBlue};
+        fill: ${constants.blue};
       }
       & .headline {
         font-size: 24px;
