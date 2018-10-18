@@ -123,10 +123,9 @@ const Styled = styled.div`
 }
 `;
 
-const LARGE_IMAGE_SIZE = 124;
 
 const PlayerHeader = ({
-  player, loading, error, small, strings,
+  player, loading, error,
 }) => {
   if (error) {
     // return <Error />;

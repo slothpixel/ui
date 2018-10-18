@@ -8,8 +8,14 @@ import constants from '../constants';
 
 class SearchForm extends React.Component {
   static propTypes = {
+    location: PropTypes.shape({
+      key: PropTypes.string,
+    }),
     strings: PropTypes.shape({}),
     small: PropTypes.bool,
+    history: PropTypes.shape({
+      push: PropTypes.func,
+    }),
   };
 
   constructor(props) {
@@ -49,12 +55,13 @@ class SearchForm extends React.Component {
 
   render() {
     const { strings, small } = this.props;
+    const { query } = this.state;
     return (
       <form onSubmit={this.formSubmit}>
         <TextField
           id="searchField"
           hintText={strings.search_title}
-          value={this.state.query}
+          value={query}
           onChange={this.handleChange}
           fullWidth
           underlineFocusStyle={{

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import constants from '../constants';
@@ -16,13 +17,18 @@ const StyledLink = styled(Link)`
    }
 `;
 
-const AppLogo = ({ style, strings }) => (
+const AppLogo = ({ style }) => (
   <StyledLink to="/" style={style}>
     <img
       src="/assets/logo_x16.png"
       style={style}
+      alt=""
     />
   </StyledLink>
 );
+
+AppLogo.propTypes = {
+  style: PropTypes.string,
+};
 
 export default AppLogo;

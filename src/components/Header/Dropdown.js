@@ -53,7 +53,7 @@ class Dropdown extends Component {
     const {
       Button, buttonProps, className, children,
     } = this.props;
-    const { open } = this.state;
+    const { open, anchorEl } = this.state;
     return (
       <div className={className}>
         <Button
@@ -64,7 +64,7 @@ class Dropdown extends Component {
         <Popover
           autoCloseWhenOffScreen={false}
           open={open}
-          anchorEl={this.state.anchorEl}
+          anchorEl={anchorEl}
           anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
           targetOrigin={{ horizontal: 'left', vertical: 'top' }}
           onRequestClose={this.handleRequestClose}

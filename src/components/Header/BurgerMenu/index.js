@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Drawer from 'material-ui/Drawer';
@@ -24,11 +25,14 @@ export default class BurgerMenu extends React.Component {
   constructor() {
     super();
     this.state = { open: false };
-    this.handleToggle = () => this.setState({ open: !this.state.open });
+    const { open } = this.state;
+    this.handleToggle = () => this.setState({ open: !open });
     this.handleClose = () => this.setState({ open: false });
   }
 
   render() {
+    const { menuItems } = this.props;
+    const { open } = this.state;
     return (
       <div>
         <IconButton onClick={this.handleToggle}>
@@ -37,11 +41,11 @@ export default class BurgerMenu extends React.Component {
         <StyledDrawer
           docked={false}
           width={260}
-          open={this.state.open}
+          open={open}
           onRequestChange={open => this.setState({ open })}
         >
           <Menu>
-            {this.props.menuItems.map((item) => {
+            {menuItems.map((item) => {
               const linkElement = React.cloneElement(item, { style: { width: '100%', display: 'block' } });
               return (
                 <StyledMenuItem key={item.key} onClick={this.handleClose}>

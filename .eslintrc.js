@@ -26,6 +26,7 @@ module.exports = {
     }],
     "react/no-array-index-key": 1,
     "react/require-default-props": 0,
-    "react/sort-comp": [2]
+    "react/sort-comp": [2],
+    "react/jsx-filename-extension": 0
   },
 };

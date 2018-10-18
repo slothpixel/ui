@@ -85,7 +85,7 @@ class Header extends React.Component {
 
   render() {
     const {
-      location, small, user, strings,
+      small, strings,
     } = this.props;
     const navbarPages = [
       <Link key="header_player" to="/player">Player</Link>,
@@ -101,7 +101,7 @@ class Header extends React.Component {
       children: <ActionSettings />,
     };
 
-    const LogoGroup = ({ small }) => (
+    const LogoGroup = () => (
       <VerticalAlignToolbar>
         {!small && <BurgerMenu menuItems={burgerItems} />}
         <AppLogo
@@ -137,11 +137,11 @@ class Header extends React.Component {
       </VerticalAlignToolbar>
     );
 
-    const AccountGroup = () => (
+    /* const AccountGroup = () => (
       <VerticalAlignToolbar>
-        {/* <AccountWidget /> */}
+        <AccountWidget />
       </VerticalAlignToolbar>
-    );
+    ); */
 
     const SettingsGroup = ({ user }) => (
       <VerticalAlignDropdown
@@ -183,7 +183,7 @@ class Header extends React.Component {
       </BugLink>
     );
 
-    const { Announce } = this.state;
+    // const { Announce } = this.state;
 
     return (
       <div>
@@ -195,7 +195,7 @@ class Header extends React.Component {
           </VerticalAlignDiv>
           <VerticalAlignDiv style={{ marginLeft: 'auto' }}>
             {/* small && <AccountGroup /> */}
-            <SettingsGroup user={user} />
+            <SettingsGroup user="" />
           </VerticalAlignDiv>
         </ToolbarHeader>
         {/* location.pathname !== '/' && Announce && <Announce /> */}
@@ -206,7 +206,7 @@ class Header extends React.Component {
 
 const mapStateToProps = state => ({
   small: state.browser.greaterThan.small,
-  strings: state.strings,
+  strings: state.app.strings,
 });
 
 export default connect(mapStateToProps, null)(Header);

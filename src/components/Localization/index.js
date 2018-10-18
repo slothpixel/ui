@@ -39,9 +39,7 @@ class LocalizationMenuItems extends Component {
   handleOnClick = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    this.setState({
-      open: !this.state.open,
-    });
+    this.setState(open => ({ open: !open }));
   };
 
   render() {
@@ -75,7 +73,7 @@ class LocalizationMenuItems extends Component {
 }
 
 const mapStateToProps = state => ({
-  strings: state.strings,
+  strings: state.app.strings,
 });
 
 LocalizationMenuItems.propTypes = {

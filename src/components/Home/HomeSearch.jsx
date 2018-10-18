@@ -11,7 +11,7 @@ const HomeSearch = ({ strings }) => (
         name="search"
         placeholder={strings.app_name_uuid}
         style={{
-          width: 250, height: 45, backgroundColor: 'rgba(0,0,0,.6)', paddingLeft: 40, backgroundImage: 'url(' + '/assets/search.svg' + ')', backgroundSize: 20,
+          width: 250, height: 45, backgroundColor: 'rgba(0,0,0,.6)', paddingLeft: 40, backgroundImage: 'url(/assets/search.svg)', backgroundSize: 20,
         }}
       />
     </form>
