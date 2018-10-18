@@ -1,3 +1,5 @@
+/* eslint-disable */
+// This file is WIP
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -8,6 +10,7 @@ import constants from '../constants';
 
 class SearchForm extends React.Component {
   static propTypes = {
+    dispatchSearch: PropTypes.func,
     location: PropTypes.shape({
       key: PropTypes.string,
     }),
@@ -80,6 +83,7 @@ class SearchForm extends React.Component {
 
 const mapStateToProps = state => ({
   strings: state.app.strings,
+  small: state.browser.greaterThan.small,
 });
 
 

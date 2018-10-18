@@ -148,7 +148,7 @@ export const PlayerStatsCards = ({
 };
 
 const {
-  number, bool, shape, strings,
+  number, bool, shape,
 } = PropTypes;
 
 PlayerStatsCards.propTypes = {
