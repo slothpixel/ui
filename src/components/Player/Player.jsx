@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import {
   getPlayer,
+  getGuild,
 } from '../../actions';
 import PlayerHeader from './Header/PlayerHeader';
 
@@ -24,12 +25,14 @@ class RequestLayer extends React.Component {
     loading: PropTypes.bool,
     strings: PropTypes.shape({}),
     player: PropTypes.shape({}),
+    guild: PropTypes.shape({}),
   };
 
   componentDidMount() {
     const { props } = this;
     const { playerId } = props.match.params;
     props.getPlayer(playerId);
+    props.getGuild(playerId);
   }
 
   componentDidUpdate(prevProps) {
@@ -64,12 +67,14 @@ class RequestLayer extends React.Component {
 const mapStateToProps = state => ({
   loading: state.app.player.loading,
   player: state.app.player.data,
+  guild: state.app.guild.data,
   playerName: (state.app.player.data || {}).username,
   strings: state.app.strings,
 });
 
 const mapDispatchToProps = dispatch => ({
   getPlayer: playerId => dispatch(getPlayer(playerId)),
+  getGuild: playerId => dispatch(getGuild(playerId)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RequestLayer));

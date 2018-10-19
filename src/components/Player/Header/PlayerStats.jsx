@@ -77,6 +77,7 @@ export const PlayerStatsCards = ({
   loading,
   error,
   compact,
+  username,
   level,
   achievement_points,
   karma,
@@ -84,6 +85,7 @@ export const PlayerStatsCards = ({
   online,
   first_login,
   last_login,
+  guild,
   strings,
 }) => {
   if (error) {
@@ -126,7 +128,9 @@ export const PlayerStatsCards = ({
             title={strings.th_friends}
           />
           <PlayerStatsCard
-            subtitle={<div className="colorWhite">{0}</div>}
+            subtitle={guild.name
+              ? <a href={`/guilds/player/${username}`}>{guild.name}</a>
+              : <div className="colorWhite">{strings.th_none}</div>}
             title={strings.th_guild}
           />
           <PlayerStatsCard
@@ -162,6 +166,7 @@ PlayerStatsCards.propTypes = {
   online: bool,
   first_login: number,
   last_login: number,
+  guild: shape({}),
   strings: shape({}),
 };
 

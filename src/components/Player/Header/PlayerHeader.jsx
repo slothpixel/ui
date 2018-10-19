@@ -125,7 +125,7 @@ const Styled = styled.div`
 
 
 const PlayerHeader = ({
-  player, loading, error,
+  player, guild, loading, error,
 }) => {
   if (error) {
     // return <Error />;
@@ -179,7 +179,7 @@ const PlayerHeader = ({
                 <RenderUsername {...player} />
               </div>
             </div>
-            <PlayerStats {...player} />
+            <PlayerStats {...player} guild={guild} />
           </div>
         </div>
       </div>
@@ -196,9 +196,10 @@ PlayerHeader.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  loading: state.app.player.loading,
-  error: state.app.player.error,
+  loading: state.app.player.loading && state.app.guild.loading,
+  error: state.app.player.error && state.app.guild.error,
   player: state.app.player.data,
+  guild: state.app.guild.data,
   playerName: (state.app.player.data || {}).username,
   officialPlayerName: (state.app.player.data.profile || {}).name,
   small: state.browser.greaterThan.small,
