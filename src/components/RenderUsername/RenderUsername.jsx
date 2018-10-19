@@ -2,7 +2,7 @@
 import React from 'react';
 import RenderString from './RenderString';
 
-function buildFormattedString(username = '&fAnonymous', rank, prefix, rank_plus_color) {
+function buildFormattedString(username = '&fAnonymous', rank, prefix, rank_plus_color, tag, tag_color) {
   let string;
   if (prefix) {
     string = `${prefix} ${username}`;
@@ -39,14 +39,18 @@ function buildFormattedString(username = '&fAnonymous', rank, prefix, rank_plus_
         string = `&7${username}`;
     }
   }
+  if (tag) {
+    string += ` ${tag_color}[${tag}]`;
+  }
+  return RenderString(string);
 }
 
 const RenderUsername = ({
-  username, rank, prefix, rank_plus_color,
+  username, rank, prefix, rank_plus_color, tag = null, tag_color,
 }) => {
   const getFormattedUsername = () => (
     <div>
-      {buildFormattedString(username, rank, prefix, rank_plus_color)}
+      {buildFormattedString(username, rank, prefix, rank_plus_color, tag, tag_color)}
     </div>
   );
   return getFormattedUsername();

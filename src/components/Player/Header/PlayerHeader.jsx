@@ -133,7 +133,6 @@ const PlayerHeader = ({
   if (loading) {
     return <Facebook primaryColor="#666" secondaryColor="#ecebeb" width={400} height={60} animate />;
   }
-
   /* let badgeStyle = {
     fontSize: 20,
     top: 5,
@@ -176,7 +175,7 @@ const PlayerHeader = ({
           <div className="playerInfo">
             <div className="titleNameButtons">
               <div className="playerName">
-                <RenderUsername {...player} />
+                <RenderUsername {...player} {...guild} />
               </div>
             </div>
             <PlayerStats {...player} guild={guild} />
