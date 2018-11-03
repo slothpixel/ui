@@ -195,7 +195,7 @@ class Header extends React.Component {
           </VerticalAlignDiv>
           <VerticalAlignDiv style={{ marginLeft: 'auto' }}>
             {/* small && <AccountGroup /> */}
-            <SettingsGroup user="" />
+            <SettingsGroup user={{}} />
           </VerticalAlignDiv>
         </ToolbarHeader>
         {/* location.pathname !== '/' && Announce && <Announce /> */}

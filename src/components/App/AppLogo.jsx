@@ -28,7 +28,7 @@ const AppLogo = ({ style }) => (
 );
 
 AppLogo.propTypes = {
-  style: PropTypes.string,
+  style: PropTypes.shape({}),
 };
 
 export default AppLogo;

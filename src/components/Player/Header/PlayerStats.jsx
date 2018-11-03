@@ -159,6 +159,7 @@ PlayerStatsCards.propTypes = {
   loading: bool,
   error: bool,
   compact: bool,
+  username: PropTypes.string,
   level: number,
   achievement_points: number,
   karma: number,
