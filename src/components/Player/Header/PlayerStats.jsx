@@ -152,14 +152,14 @@ export const PlayerStatsCards = ({
 };
 
 const {
-  number, bool, shape,
+  number, bool, shape, string,
 } = PropTypes;
 
 PlayerStatsCards.propTypes = {
   loading: bool,
   error: bool,
   compact: bool,
-  username: PropTypes.string,
+  username: string,
   level: number,
   achievement_points: number,
   karma: number,

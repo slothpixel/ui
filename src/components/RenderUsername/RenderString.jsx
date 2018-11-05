@@ -29,7 +29,7 @@ function RenderString(string) {
 
   const spans = [];
   parts.forEach((part, i) => {
-    spans.push(<span style={{ color: mcColors[codes[i]] }}>{parts[i]}</span>);
+    spans.push(<span style={{ color: mcColors[codes[i]] }} key={part}>{parts[i]}</span>);
   });
   return spans;
 }
