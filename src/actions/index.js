@@ -1,8 +1,8 @@
 import action from './action';
 import { langs } from '../lang';
 
-export const getPlayer = accountId => action('player', process.env.REACT_APP_API_HOST, `api/player/${accountId}`);
-export const getGuild = accountId => action('guild', process.env.REACT_APP_API_HOST, `api/guild/${accountId}`);
+export const getPlayer = accountId => action('player', process.env.REACT_APP_API_HOST, `api/players/${accountId}`);
+export const getGuild = accountId => action('guild', process.env.REACT_APP_API_HOST, `api/guilds/${accountId}`);
 export const getStrings = () => async (dispatch) => {
   const savedLang = window.localStorage && window.localStorage.getItem('localization');
   const defaultLang = langs[0];
