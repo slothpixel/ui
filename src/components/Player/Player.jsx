@@ -7,7 +7,10 @@ import {
   getPlayer,
   getGuild,
 } from '../../actions';
+import TabBar from '../TabBar';
+import Spinner from '../Spinner';
 import PlayerHeader from './Header/PlayerHeader';
+import playerPages from './playerPages';
 
 class RequestLayer extends React.Component {
   static propTypes = {
@@ -48,8 +51,8 @@ class RequestLayer extends React.Component {
       location, match, strings, loading, player,
     } = this.props;
     const { playerId } = match.params;
-    // const info = match.params.info || 'overview';
-    // const page = playerPages(playerId, strings).find(_page => _page.key === info);
+    const info = match.params.info || 'stats';
+    const page = playerPages(playerId, strings).find(_page => _page.key === info);
     const playerName = player.username || playerId || strings.general_anonymous;
     const title = playerName;
     if (loading) return null;
@@ -58,6 +61,10 @@ class RequestLayer extends React.Component {
         <Helmet title={title} />
         <div>
           <PlayerHeader location={location} />
+          <TabBar info={info} tabs={playerPages(playerId, strings)} />
+        </div>
+        <div>
+          {page ? page.content(playerId, match.params, location) : <Spinner />}
         </div>
       </div>
     );

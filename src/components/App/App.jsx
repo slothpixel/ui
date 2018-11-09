@@ -152,7 +152,7 @@ class App extends React.Component {
           <StyledBodyDiv {...this.props}>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/player/:playerId" component={Player} />
+              <Route exact path="/players/:playerId/:info?" component={Player} />
             </Switch>
           </StyledBodyDiv>
           <Footer location={location} width={width} />

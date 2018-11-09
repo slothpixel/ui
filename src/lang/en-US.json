@@ -46,5 +46,10 @@
   "title_default": "Slothpixel - Hypixel Statistics",
   "title_template": "%s - Slothpixel - Hypixel Statistics",
 
-  "general_anonymous": "Anonymous"
+  "general_anonymous": "Anonymous",
+
+  "tab_stats": "Stats",
+  "tab_achievements": "Achievements",
+  "tab_quests": "Quests",
+  "tab_matches": "Matches"
 }
