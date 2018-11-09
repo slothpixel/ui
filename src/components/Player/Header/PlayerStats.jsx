@@ -15,7 +15,6 @@ const Styled = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0;
-  background-color: rgba(0, 0, 0, 0);
 }
 .colorGold {
   color: ${constants.colorGold}
@@ -82,6 +81,9 @@ export const PlayerStatsCards = ({
   achievement_points,
   karma,
   quests = 0,
+  total_kills,
+  total_wins,
+  total_coins,
   online,
   first_login,
   last_login,
@@ -111,16 +113,20 @@ export const PlayerStatsCards = ({
             title={strings.th_quests}
           />
           <PlayerStatsCard
-            subtitle={<div className="colorDarkGreen">{addCommas(quests)}</div>}
+            subtitle={<div className="colorDarkGreen">{addCommas(total_wins)}</div>}
             title={strings.th_wins_total}
           />
           <PlayerStatsCard
-            subtitle={<div className="colorRed">{addCommas(quests)}</div>}
+            subtitle={<div className="colorRed">{addCommas(total_kills)}</div>}
             title={strings.th_kills_total}
           />
           <PlayerStatsCard
             subtitle={<div className="colorLightPurple">{addCommas(karma)}</div>}
             title={strings.th_karma}
+          />
+          <PlayerStatsCard
+            subtitle={<div className="colorGold">{addCommas(total_coins)}</div>}
+            title={strings.th_coins_current}
           />
           <hr />
           <PlayerStatsCard
@@ -164,6 +170,9 @@ PlayerStatsCards.propTypes = {
   achievement_points: number,
   karma: number,
   quests: number,
+  total_kills: number,
+  total_wins: number,
+  total_coins: number,
   online: bool,
   first_login: number,
   last_login: number,
