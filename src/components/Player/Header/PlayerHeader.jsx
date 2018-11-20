@@ -13,7 +13,6 @@ const Styled = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 15px;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 .playerName {
   color: rgba(245, 245, 245, 0.870588);

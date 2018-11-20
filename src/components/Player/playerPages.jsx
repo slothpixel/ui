@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   StatsPage,
+  AchievementsPage,
 } from './Pages';
 
 const playerPages = strings => [{
@@ -10,8 +11,7 @@ const playerPages = strings => [{
 }, {
   name: strings.tab_achievements,
   key: 'achievements',
-  disabled: true,
-  // content: (playerId, routeParams, location) => (null),
+  content: (playerId, routeParams, location) => (<AchievementsPage playerId={playerId} routeParams={routeParams} location={location} />),
 }, {
   name: strings.tab_quests,
   key: 'quests',
