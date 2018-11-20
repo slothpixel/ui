@@ -11,7 +11,7 @@ const PageLinks = ({ strings }) => {
     path: '',
   }, {
     name: strings.app_api_docs,
-    path: '',
+    path: '//docs.slothpixel.me',
   }, {
     name: strings.app_blog,
     path: '//medium.com/slothpixel',
