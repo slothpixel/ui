@@ -34,23 +34,14 @@ const StyledHeaderContainer = styled.div`
 function getName(name = '') {
   let result;
   switch (name) {
-    case 'blitz':
-      result = 'Blitz Survival Games';
-      break;
     case 'christmas2017':
       result = 'Christmas';
-      break;
-    case 'copsandcrims':
-      result = 'Cops and Crims';
       break;
     case 'general':
       result = 'General';
       break;
     case 'halloween2017':
       result = 'Halloween';
-      break;
-    case 'warlords':
-      result = 'Warlords';
       break;
     default: {
       const temp = gameTypes.find(game => game.standard_name === name);
