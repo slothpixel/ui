@@ -51,5 +51,9 @@
   "tab_stats": "Stats",
   "tab_achievements": "Achievements",
   "tab_quests": "Quests",
-  "tab_matches": "Matches"
+  "tab_matches": "Matches",
+
+  "pagination_first": "First",
+  "pagination_last": "Last",
+  "pagination_of": "of"
 }
