@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { achievements_extended as achievementData, game_types as gameTypes } from 'hypixelconstants';
-import addCommas from '../../../../utility';
+import { addCommas } from '../../../../utility';
 import { getPlayerAchievements } from '../../../../actions';
 import { HeaderCard } from './Styled';
 // import { PlayerStatsCard } from '../../Header/Styled';
