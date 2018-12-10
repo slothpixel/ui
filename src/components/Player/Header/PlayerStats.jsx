@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Error from '../../Error';
 import Spinner from '../../Spinner';
-import addCommas from '../../../utility';
+import { addCommas, getLocalizedDate } from '../../../utility';
 import { PlayerStatsCard } from './Styled';
 import constants from '../../constants';
 
@@ -144,11 +144,11 @@ export const PlayerStatsCards = ({
             title={strings.th_session}
           />
           <PlayerStatsCard
-            subtitle={<div className="colorWhite">{first_login}</div>}
+            subtitle={<div className="colorWhite">{getLocalizedDate(first_login)}</div>}
             title={strings.th_first_login}
           />
           <PlayerStatsCard
-            subtitle={<div className="colorWhite">{last_login}</div>}
+            subtitle={<div className="colorWhite">{getLocalizedDate(last_login)}</div>}
             title={strings.th_last_login}
           />
         </div>

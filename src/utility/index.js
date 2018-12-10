@@ -77,6 +77,16 @@ export function getDOY(date) {
   return dayOfYear;
 }
 
+export function getLocalizedDate(date) {
+  const navigatorLanguage = (navigator.languages && navigator.languages.length)
+    ? navigator.languages[0]
+    : navigator.userLanguage
+    || navigator.language
+    || navigator.browserLanguage;
+  const langCode = navigatorLanguage || window.localStorage.getItem('localization') || 'en-US';
+  return new Date(date).toLocaleDateString(langCode, { hour: 'numeric', minute: 'numeric', second: 'numeric' });
+}
+
 export function getLocalizedWeekdayStrings() {
   const langCode = window.localStorage.getItem('localization') || 'en-US';
   const d = new Date();
