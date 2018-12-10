@@ -184,9 +184,10 @@ class Weeks extends React.Component {
     this.setState({ hoveredMonth: null });
   };
 
-  handleDayClick = clickedDay => () => {
+  handleDayClick = newClickedDay => () => {
+    const { clickedDay } = this.state;
     this.setState({
-      clickedDay: clickedDay === this.state.clickedDay ? null : clickedDay,
+      clickedDay: newClickedDay === clickedDay ? null : newClickedDay,
     });
   };
 

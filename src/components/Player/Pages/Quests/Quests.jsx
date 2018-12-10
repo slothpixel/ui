@@ -43,10 +43,10 @@ class RequestLayer extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { playerId } = this.props;
-    const { key } = this.props.location;
+    const { location } = this.props;
     if (
       playerId !== prevProps.playerId
-      || key !== prevProps.location.key
+      || location.key !== prevProps.location.key
     ) {
       getData(this.props);
     }
