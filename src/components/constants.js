@@ -18,6 +18,22 @@ export default {
   colorLightPurple: '#FF55FF', // &d
   colorYellow: '#FFFF55', // &e
   colorWhite: '#FFFFFF', // &f
+  shadowBlack: '#000000',
+  shadowDarkBlue: '#00002A',
+  shadowDarkGreen: '#002A00',
+  shadowDarkAqua: '#002A2A',
+  shadowDarkRed: '#2A0000',
+  shadowDarkPurple: '#2A002A',
+  shadowGold: '#2A2A00',
+  shadowGray: '#2A2A2A',
+  shadowDarkGray: '#151515',
+  shadowBlue: '#15153F',
+  shadowGreen: '#153F15',
+  shadowAqua: '#153F3F',
+  shadowRed: '#3F1515',
+  shadowLightPurple: '#3F153F',
+  shadowYellow: '#3F3F15',
+  shadowWhite: '#3F3F3F',
   colorSuccess: '#66BB6A',
   colorDanger: '#ff4c4c',
   colorMuted: '#727272',
