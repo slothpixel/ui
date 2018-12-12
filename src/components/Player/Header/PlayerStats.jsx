@@ -80,7 +80,7 @@ export const PlayerStatsCards = ({
   level,
   achievement_points,
   karma,
-  quests = 0,
+  quests_completed,
   total_kills,
   total_wins,
   total_coins,
@@ -109,7 +109,7 @@ export const PlayerStatsCards = ({
             title={strings.th_achievements}
           />
           <PlayerStatsCard
-            subtitle={<div className="colorDarkAqua">{addCommas(quests)}</div>}
+            subtitle={<div className="colorDarkAqua">{addCommas(quests_completed)}</div>}
             title={strings.th_quests}
           />
           <PlayerStatsCard
@@ -169,7 +169,7 @@ PlayerStatsCards.propTypes = {
   level: number,
   achievement_points: number,
   karma: number,
-  quests: number,
+  quests_completed: number,
   total_kills: number,
   total_wins: number,
   total_coins: number,
