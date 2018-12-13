@@ -10,7 +10,6 @@ class HomeSearch extends React.Component {
       key: PropTypes.string,
     }),
     strings: PropTypes.shape({}),
-    small: PropTypes.bool,
     history: PropTypes.shape({
       push: PropTypes.func,
     }),
@@ -37,7 +36,7 @@ class HomeSearch extends React.Component {
   };
 
   render() {
-    const { strings, small } = this.props;
+    const { strings } = this.props;
     const { query } = this.state;
     return (
       <form onSubmit={this.formSubmit}>
@@ -59,7 +58,6 @@ class HomeSearch extends React.Component {
 
 const mapStateToProps = state => ({
   strings: state.app.strings,
-  small: state.browser.greaterThan.small,
 });
 
 export default withRouter(connect(mapStateToProps)(HomeSearch));
