@@ -1,29 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import TextField from 'material-ui/TextField';
 
-const HomeSearch = ({ strings }) => (
-  <div>
-    <form action="/stats/" method="get">
-      <input
-        type="text"
-        className="search-box"
-        name="search"
-        placeholder={strings.app_name_uuid}
-        style={{
-          width: 250, height: 45, backgroundColor: 'rgba(0,0,0,.6)', paddingLeft: 40, backgroundImage: 'url(/assets/search.svg)', backgroundSize: 20,
-        }}
-      />
-    </form>
-  </div>
-);
+class HomeSearch extends React.Component {
+  static propTypes = {
+    location: PropTypes.shape({
+      key: PropTypes.string,
+    }),
+    strings: PropTypes.shape({}),
+    small: PropTypes.bool,
+    history: PropTypes.shape({
+      push: PropTypes.func,
+    }),
+  };
 
-HomeSearch.propTypes = {
-  strings: PropTypes.shape({}),
-};
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  formSubmit = (e) => {
+    const { query } = this.state;
+    const { history } = this.props;
+    e.preventDefault();
+    history.push(`/players/${query}`);
+  };
+
+  handleChange = (e) => {
+    const { value } = e.target;
+
+    this.setState({
+      query: value,
+    });
+  };
+
+  render() {
+    const { strings, small } = this.props;
+    const { query } = this.state;
+    return (
+      <form onSubmit={this.formSubmit}>
+        <TextField
+          id="homeSearchField"
+          hintText={strings.app_name_uuid}
+          value={query}
+          onChange={this.handleChange}
+          fullWidth
+          style={{
+            width: 250, height: 45, paddingLeft: 15, backgroundColor: 'rgba(0,0,0,.6)',
+          }}
+          underlineStyle={{ left: 0, bottom: -1 }}
+        />
+      </form>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   strings: state.app.strings,
+  small: state.browser.greaterThan.small,
 });
 
-export default connect(mapStateToProps)(HomeSearch);
+export default withRouter(connect(mapStateToProps)(HomeSearch));
