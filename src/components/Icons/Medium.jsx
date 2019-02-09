@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default props => (
-  <svg {...props} viewBox="0 0 150 150">
+  <svg {...props} viewBox="30 20 140 140">
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="Monogram" fillRule="nonzero">
         <path
