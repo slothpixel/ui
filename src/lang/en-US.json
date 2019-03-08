@@ -43,6 +43,11 @@
   "th_first_login": "First Login",
   "th_last_login": "Last Login",
 
+  "guild_members": "Members",
+  "guild_legacy_rank": "Legacy Rank",
+  "guild_created": "Created",
+  "guild_description": "Description",
+
   "title_default": "Slothpixel - Hypixel Statistics",
   "title_template": "%s - Slothpixel - Hypixel Statistics",
 

@@ -82,12 +82,12 @@ const Styled = styled.div`
   justify-content: center;
 }
 .guildTierMedal {
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   height: 32px;
   width: 32px;
   margin: 0 5px;
-  vertical-align: middle
 }
 `;
 
@@ -120,7 +120,7 @@ const getGuildTierMedal = (level, rank) => {
   return (
     <div
       className="guildTierMedal"
-      style={{ background: `url("${medalPath}") no-repeat`, backgroundPosition: `0 ${tier * 32}px` }}
+      style={{ background: `url("${medalPath}") no-repeat`, backgroundPosition: `-${tier * 32}px 0` }}
     />
   );
 };
@@ -140,8 +140,9 @@ const GuildHeader = ({
         <div className="topContainer">
           <div className="playerInfo">
             <div className="titleNameButtons">
+              { // TODO - Replace legacy ranking with current ranking
+                getGuildTierMedal(guild.level, guild.legacy_ranking)}
               <div className="playerName">
-                {getGuildTierMedal(guild.level, 100)}
                 {
                   guild.tag !== null
                     ? RenderString(`&f${guild.name} ${guild.tag_color}[${guild.tag}]`)

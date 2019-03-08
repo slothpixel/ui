@@ -94,25 +94,25 @@ export const GuildStatsCards = ({
       <div className="container">
         <div style={{ textAlign: compact ? 'center' : '' }}>
           <GuildStatsCard
-            subtitle={<div className="colorGold">{level}</div>}
+            subtitle={<div className="colorGold">{Math.floor(level)}</div>}
             title={strings.th_level}
           />
           <GuildStatsCard
             subtitle={<div className="colorWhite">{`${members.length}/125`}</div>}
-            title={'members'}
+            title={strings.guild_members}
           />
           <GuildStatsCard
-            subtitle={<div className="colorWhite">{legacy_ranking}</div>}
-            title={'legacy rank'}
+            subtitle={<div className="colorWhite">{addCommas(legacy_ranking)}</div>}
+            title={strings.guild_legacy_rank}
           />
           <GuildStatsCard
             subtitle={<div className="colorWhite">{getLocalizedDate(created)}</div>}
-            title={'created'}
+            title={strings.guild_created}
           />
           <hr />
           <GuildStatsCard
             subtitle={<div className="colorWhite">{description}</div>}
-            title={'description'}
+            title={strings.guild_description}
           />
         </div>
       </div>
