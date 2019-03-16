@@ -112,8 +112,10 @@ const getGuildTierMedal = (level, rank) => {
     type = 'Gold';
   } else if (rank <= 25) {
     type = 'Silver';
-  } else {
+  } else if (rank <= 100) {
     type = 'Bronze';
+  } else {
+    type = 'Default';
   }
 
   const medalPath = `/assets/hypixel/guild/Level_${type}.png`;
