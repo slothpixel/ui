@@ -9,7 +9,7 @@ import {
 import TabBar from '../TabBar';
 import Spinner from '../Spinner';
 import GuildHeader from './Header/GuildHeader';
-import RenderString from '../RenderUsername/RenderString';
+import guildPages from './guildPages';
 
 class RequestLayer extends React.Component {
   static propTypes = {
@@ -41,9 +41,8 @@ class RequestLayer extends React.Component {
       location, strings, match, loading, guild,
     } = this.props;
     const { playerId } = match.params;
-    const info = match.params.info || 'stats';
-    // const page = playerPages(playerId, strings).find(_page => _page.key === info);
-    // const playerName = player.username || playerId || strings.general_anonymous;
+    const info = match.params.info || 'members';
+    const page = guildPages(playerId, strings).find(_page => _page.key === info);
     const title = guild.name;
     if (loading) return null;
     return (
@@ -51,12 +50,10 @@ class RequestLayer extends React.Component {
         <Helmet title={title} />
         <div>
           <GuildHeader location={location} />
-          {/*
-          <TabBar info={info} tabs={playerPages(playerId, strings)} />
-          */}
+          <TabBar info={info} tabs={guildPages(playerId, strings)} />
         </div>
         <div>
-          {/* page ? page.content(playerId, match.params, location) : <Spinner /> */}
+          {page ? page.content(playerId, match.params, location) : <Spinner />}
         </div>
       </div>
     );
@@ -66,12 +63,11 @@ class RequestLayer extends React.Component {
 const mapStateToProps = state => ({
   loading: state.app.guild.loading,
   guild: state.app.guild.data,
-  playerName: (state.app.player.data || {}).username,
   strings: state.app.strings,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getGuild: playerId => dispatch(getGuild(playerId)),
+  getGuild: playerId => dispatch(getGuild(playerId, { populatePlayers: true })),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RequestLayer));

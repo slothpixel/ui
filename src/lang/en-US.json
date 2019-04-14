@@ -42,6 +42,11 @@
   "th_session_offline": "Offline",
   "th_first_login": "First Login",
   "th_last_login": "Last Login",
+  "th_joined": "Joined",
+  "th_skin": "Skin",
+  "th_username": "Username",
+  "th_rank": "Rank",
+  "th_quest_participation": "Quest Participation",
 
   "guild_members": "Members",
   "guild_legacy_rank": "Legacy Rank",

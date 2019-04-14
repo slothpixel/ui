@@ -102,7 +102,7 @@ export const GuildStatsCards = ({
             title={strings.guild_members}
           />
           <GuildStatsCard
-            subtitle={<div className="colorWhite">{addCommas(legacy_ranking)}</div>}
+            subtitle={<div className="colorWhite">{addCommas(legacy_ranking) || '-'}</div>}
             title={strings.guild_legacy_rank}
           />
           <GuildStatsCard
