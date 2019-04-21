@@ -1,6 +1,7 @@
 import action from './action';
 import { langs } from '../lang';
 
+export const getMetadata = () => action('metadata', process.env.REACT_APP_API_HOST, 'api/metadata');
 export const getPlayer = accountId => action('player', process.env.REACT_APP_API_HOST, `api/players/${accountId}`);
 export const getPlayerAchievements = accountId => action('playerAchievements', process.env.REACT_APP_API_HOST, `api/players/${accountId}/achievements`);
 export const getPlayerQuests = accountId => action('playerQuests', process.env.REACT_APP_API_HOST, `api/players/${accountId}/quests`);

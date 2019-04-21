@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import ReactGA from 'react-ga';
 import { injectGlobal } from 'styled-components';
 import store from './store';
-import { getStrings } from './actions';
+import { getMetadata, getStrings } from './actions';
 import constants from './components/constants';
 import App from './components/App';
 import { unregister } from './registerServiceWorker';
@@ -134,6 +134,8 @@ li {
 }
 `]);
 
+// Fetch metadata (used on all pages)
+store.dispatch(getMetadata());
 // Fetch strings
 store.dispatch(getStrings());
 
@@ -150,7 +152,8 @@ const app = (
     <Router history={history}>
       <Route component={App} />
     </Router>
-  </Provider>);
+  </Provider>
+);
 if (rootElement.hasChildNodes()) {
   render(app, rootElement);
 } else {
