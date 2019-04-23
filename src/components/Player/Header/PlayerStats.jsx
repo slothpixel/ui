@@ -129,10 +129,10 @@ export const PlayerStatsCards = ({
             title={strings.th_coins_current}
           />
           <hr />
-          <PlayerStatsCard
+          {/* <PlayerStatsCard
             subtitle={<div className="colorWhite">{0}</div>}
             title={strings.th_friends}
-          />
+          /> */}
           <PlayerStatsCard
             subtitle={guild.name
               ? <a href={`/guilds/player/${username}`}>{guild.name}</a>
