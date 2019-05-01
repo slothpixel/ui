@@ -18,6 +18,10 @@ const playerPages = strings => [{
   key: 'quests',
   content: (playerId, routeParams, location) => (<QuestsPage playerId={playerId} routeParams={routeParams} location={location} />),
 }, {
+  name: strings.tab_friends,
+  key: 'friends',
+  disabled: true,
+}, {
   name: strings.tab_shops,
   key: 'shops',
   disabled: true,
