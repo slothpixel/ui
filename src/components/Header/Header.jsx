@@ -7,7 +7,7 @@ import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import ActionSettings from 'material-ui/svg-icons/action/settings';
 import Bug from 'material-ui/svg-icons/action/bug-report';
-import LogOutButton from 'material-ui/svg-icons/action/power-settings-new';
+// import LogOutButton from 'material-ui/svg-icons/action/power-settings-new';
 import styled from 'styled-components';
 import LocalizationMenu from '../Localization';
 import Dropdown from './Dropdown';
@@ -90,6 +90,7 @@ class Header extends React.Component {
     const navbarPages = [
       <Link key="header_player" to="/player">Player</Link>,
       <Link key="header_guild" to="/guild">Guild</Link>,
+      <Link key="header_leaderboards" to="/leaderboards">Leaderboards</Link>
     ];
 
     const burgerItems = [
@@ -150,7 +151,7 @@ class Header extends React.Component {
       >
         <LocalizationMenu />
         <ReportBug />
-        {user ? <LogOut /> : null}
+        {/* user ? <LogOut /> : null */}
       </VerticalAlignDropdown>
     );
 
@@ -171,7 +172,7 @@ class Header extends React.Component {
       </BugLink>
     );
 
-    const LogOut = () => (
+    /* const LogOut = () => (
       <BugLink
         href={`${process.env.REACT_APP_API_HOST}/logout`}
         rel="noopener noreferrer"
@@ -181,7 +182,7 @@ class Header extends React.Component {
           {strings.app_logout}
         </span>
       </BugLink>
-    );
+    ); */
 
     // const { Announce } = this.state;
 

@@ -50,7 +50,8 @@ const Heading = ({
         )
         : <div />
       }
-    </DivToUse>);
+    </DivToUse>
+  );
 };
 
 const {

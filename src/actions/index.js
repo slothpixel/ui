@@ -6,6 +6,7 @@ export const getPlayer = accountId => action('player', process.env.REACT_APP_API
 export const getPlayerAchievements = accountId => action('playerAchievements', process.env.REACT_APP_API_HOST, `api/players/${accountId}/achievements`);
 export const getPlayerQuests = accountId => action('playerQuests', process.env.REACT_APP_API_HOST, `api/players/${accountId}/quests`);
 export const getGuild = (accountId, params) => action('guild', process.env.REACT_APP_API_HOST, `api/guilds/${accountId}`, params);
+export const getLeaderboard = template => action('leaderboard', process.env.REACT_APP_API_HOST, `api/leaderboards/${template}`);
 export const getStrings = () => async (dispatch) => {
   const savedLang = window.localStorage && window.localStorage.getItem('localization');
   const defaultLang = langs[0];

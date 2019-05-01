@@ -7,5 +7,6 @@ export default combineReducers({
   playerQuests: reducer('playerQuests'),
   guild: reducer('guild'),
   metadata: reducer('metadata'),
+  leaderboard: reducer('leaderboard'),
   strings: (state = {}, action) => ((action && action.type === 'strings') ? action.payload : state),
 });

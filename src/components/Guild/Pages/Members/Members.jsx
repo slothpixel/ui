@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Table from '../../../Table';
 import Container from '../../../Container';
 import guildMembersColumns from './guildMembersColumns';
@@ -9,7 +9,7 @@ const Members = ({
   data, error, loading, strings,
 }) => (
   <Container title={strings.guild_members} error={error} loading={loading}>
-    <Table columns={guildMembersColumns(strings)} data={data} placeholderMessage={'owo'} />
+    <Table columns={guildMembersColumns(strings)} data={data} />
   </Container>
 );
 

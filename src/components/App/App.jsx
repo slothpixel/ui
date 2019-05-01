@@ -13,6 +13,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 import Player from '../Player';
 import Guild from '../Guild';
+import Leaderboards from '../Leaderboards';
 import constants from '../constants';
 
 const muiTheme = {
@@ -155,6 +156,7 @@ class App extends React.Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/players/:playerId/:info?" component={Player} />
               <Route exact path="/guilds/player/:playerId" component={Guild} />
+              <Route exact path="/leaderboards/:template?" component={Leaderboards} />
             </Switch>
           </StyledBodyDiv>
           <Footer location={location} width={width} />
