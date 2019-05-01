@@ -1,20 +1,6 @@
 import React from 'react';
-import RenderUsername from '../../../RenderUsername';
 import { getLocalizedDate } from '../../../../utility';
-
-const playerColumns = strings => [{
-  displayName: strings.th_skin,
-  field: 'uuid',
-  displayFn: row => (
-    <img src={`https://crafatar.com/avatars/${row.uuid}?size=32&default=Steve&overlay`} alt="skin" />
-  ),
-}, {
-  displayName: strings.th_username,
-  field: 'username',
-  displayFn: row => (
-    RenderUsername(row)
-  ),
-}];
+import { playerColumns } from '../../../Player/playerColumns';
 
 const memberColumns = strings => [{
   displayName: strings.th_level,
