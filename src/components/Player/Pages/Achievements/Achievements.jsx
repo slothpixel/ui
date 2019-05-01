@@ -43,6 +43,9 @@ function getName(name = '') {
     case 'halloween2017':
       result = 'Halloween';
       break;
+    case 'easter':
+      result = 'Easter';
+      break;
     default: {
       const temp = gameTypes.find(game => game.standard_name === name);
       result = temp === undefined ? name : temp.clean_name;
