@@ -4,15 +4,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { achievements_extended as achievementData, game_types as gameTypes } from 'hypixelconstants';
+import NavigationArrowForward from 'material-ui/svg-icons/navigation/subdirectory-arrow-right';
 import { addCommas } from '../../../../utility';
 import { getPlayerAchievements } from '../../../../actions';
 import { HeaderCard } from './Styled';
 // import { PlayerStatsCard } from '../../Header/Styled';
 import constants from '../../../constants';
 import ProgressBar from './ProgressBar';
-// import Table from '../../../Table';
 // import Container from '../../../Container';
-// import playerAchievementsColumns from './playerAchievementsColumns';
+
+const StyledPageContainer = styled.div`
+  display: flex;
+  align-items: right;
+`;
 
 const StyledContainer = styled.div`
   display: flex;
@@ -29,6 +33,13 @@ const StyledContainer = styled.div`
 const StyledHeaderContainer = styled.div`
   background-color: rgba(0, 0, 0, .25);
   padding: 10px;
+`;
+
+const AchievementContainer = styled.div`
+  width: 100%;
+  margin: 0 0 10px 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, .25);
 `;
 
 function getName(name = '') {
@@ -54,97 +65,151 @@ function getName(name = '') {
   return result;
 }
 
-const Overview = ({
-  achievement_points,
-  completed_total,
-  games,
-}) => (
-  <StyledHeaderContainer>
-    <HeaderCard
-      subtitle="Achievement points"
-      title={<div className="colorGold">{addCommas(achievement_points)}</div>}
-    />
-    <HeaderCard
-      subtitle="Completed"
-      title={<div className="colorDarkAqua">{addCommas(completed_total)}</div>}
-    />
-    <div>
-      {Object.keys(games).map((key) => {
-        const { completed } = games[key];
-        const { total } = achievementData[key];
-        const percent = completed / total;
-        const height = 25;
-        const Content = () => (
-          <div>
-            <span style={{
-              bottom: -height, marginTop: -height, paddingLeft: '10px', position: 'relative', float: 'left', zIndex: '1',
-            }}
-            >
-              {getName(key)}
-            </span>
-            <span style={{
-              bottom: -height, marginTop: -height, paddingRight: '10px', position: 'relative', float: 'right', zIndex: '1',
-            }}
-            >
-              {`${completed}/${total}`}
-            </span>
-          </div>
-        );
-        return (
-          <div
-            style={{
-              margin: '10px 0',
-            }}
-            key={key}
-          >
-            <ProgressBar
-              title={key}
-              percent={percent}
-              height={height}
-              content={<Content />}
-            />
-          </div>
-        );
-      })}
-    </div>
-  </StyledHeaderContainer>
-);
+function getAchievementContainer(type, game, achievementName) {
+  console.log(`${type} ${game} ${achievementName}`);
+  const { name } = achievementData[game][type][achievementName];
+  const { description } = achievementData[game][type][achievementName];
+  let percent = 1;
+  let progression = 'Completed!';
+  if (type === 'tiered') {
+    percent = 0.33;
+    progression = `45/56 (${percent * 100}%)`;
+  } else {
 
-Overview.propTypes = {
-  achievement_points: PropTypes.number,
-  completed_total: PropTypes.number,
-  games: PropTypes.shape({}),
-};
-
-const Achievements = ({
-  achievements, loading,
-}) => {
-  if (loading) {
-    return null;
   }
+  const height = 25;
+  const imagePath = (type === 'one_time')
+    ? '/assets/hypixel/diamond.png'
+    : '/assets/hypixel/diamond_block.png';
   return (
-    <StyledContainer>
-      <Overview {...achievements} />
-      {/* {Object.keys(achievements).map(key => (
-      <StyledTableContainer key={key}>
-        <Container title={strings[`heading_${key}`]} error={error} loading={loading}>
-          <Table columns={playerAchievementsColumns(strings)} data={achievements[key].list} />
-        </Container>
-      </StyledTableContainer>
-    ))} */}
-    </StyledContainer>
+    <AchievementContainer>
+      <div style={{ flexDirection: 'column', display: 'flex' }}>
+        <div style={{ flexDirection: 'row', display: 'flex' }}>
+          <img src={imagePath} alt="" style={{ height: '52px', padding: '5px' }} />
+          <div style={{ flexDirection: 'column' }}>
+            <h4 style={{ margin: 0, color: constants.colorGold }}>{name}</h4>
+            <p style={{ margin: 0 }}>{description}</p>
+          </div>
+        </div>
+        <ProgressBar
+          title="test"
+          percent={percent}
+          height={25}
+          content={(
+            <span style={{
+              bottom: -height,
+              marginTop: -22,
+              marginLeft: '5px',
+              paddingLeft: '10px',
+              position: 'relative',
+              float: 'left',
+              zIndex: '1',
+              justifyContent: 'center',
+            }}
+            >
+              {progression}
+            </span>
+)}
+        />
+      </div>
+    </AchievementContainer>
   );
-};
+}
 
-Achievements.propTypes = {
-  achievements: PropTypes.oneOfType([
-    PropTypes.shape({}),
-    PropTypes.array,
-  ]),
-  error: PropTypes.string,
-  loading: PropTypes.bool,
-  strings: PropTypes.shape({}),
-};
+class MenuItems extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: 'Arcade',
+    };
+  }
+
+  handleClick = (name) => {
+    console.log(`Clicked ${name}`);
+    this.props.onSelectedGame(name);
+    this.setState({
+      active: name,
+    });
+  };
+
+  render() {
+    const { games } = this.props;
+    return (
+      <div>
+        {Object.keys(games).map((key) => {
+          const { active } = this.state;
+          const { completed } = games[key];
+          const { total } = achievementData[key];
+          const name = getName(key);
+          const percent = completed / total;
+          const height = 25;
+          const Content = () => (
+            <div
+              role="menuitem"
+              tabIndex={0}
+              onClick={() => this.handleClick(key)}
+              onKeyPress={() => this.handleClick(key)}
+            >
+              <NavigationArrowForward
+                style={{
+                  height: '15px',
+                  width: '15px',
+                  marginTop: -22,
+                  bottom: -height,
+                  position: 'relative',
+                  float: 'left',
+                  zIndex: '1',
+                }}
+              />
+              <span style={{
+                fontWeight: active === key ? 'bold' : 'normal',
+                color: active === key ? 'white' : 'rgba(255,255,255,0.8)',
+                bottom: -height,
+                marginTop: -22,
+                marginLeft: '5px',
+                paddingLeft: '10px',
+                position: 'relative',
+                float: 'left',
+                zIndex: '1',
+              }}
+              >
+                {name}
+              </span>
+              <span style={{
+                fontWeight: active === key ? 'bold' : 'normal',
+                color: active === key ? 'white' : 'rgba(255,255,255,0.8)',
+                bottom: -height,
+                marginTop: -22,
+                paddingRight: '10px',
+                position: 'relative',
+                float: 'right',
+                zIndex: '1',
+              }}
+              >
+                {`${completed}/${total}`}
+              </span>
+            </div>
+          );
+          return (
+            <div
+              style={{
+                margin: '10px 0',
+              }}
+              key={key}
+            >
+              <ProgressBar
+                title={key}
+                percent={percent}
+                height={height}
+                content={<Content />}
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+}
 
 const getData = (props) => {
   props.getPlayerAchievements(props.playerId, props.location.search);
@@ -159,6 +224,13 @@ class RequestLayer extends React.Component {
     strings: PropTypes.shape({}),
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      game: 'general',
+    };
+  }
+
   componentDidMount() {
     getData(this.props);
   }
@@ -170,12 +242,60 @@ class RequestLayer extends React.Component {
     }
   }
 
+  handleGameChange = (game) => {
+    this.setState({
+      game,
+    });
+  };
+
   render() {
+    const { achievements } = this.props;
+    const { loading } = this.props;
+    const { game } = this.state;
+    console.log(game);
+    if (loading) {
+      return null;
+    }
     return (
-      <Achievements {...this.props} />
+      <StyledPageContainer>
+        <StyledContainer>
+          <StyledHeaderContainer>
+            <HeaderCard
+              subtitle="Achievement points"
+              title={<div className="colorGold">{addCommas(achievements.achievement_points)}</div>}
+            />
+            <HeaderCard
+              subtitle="Completed"
+              title={<div className="colorDarkAqua">{addCommas(achievements.completed_total)}</div>}
+            />
+            <MenuItems games={achievements.games} onSelectedGame={this.handleGameChange} />
+            <div />
+          </StyledHeaderContainer>
+          { console.log(achievements)}
+          <StyledContainer>
+            <div style={{ flexDirection: 'column', paddingLeft: '20px' }}>
+              {
+                 Object.keys(achievements.games[game].tiered).map(key => (
+                   getAchievementContainer('tiered', game, key)
+                 ))
+              }
+              {
+                Object.keys(achievements.games[game].one_time).map(key => (
+                  getAchievementContainer('one_time', game, achievements.games[game].one_time[key])
+                ))
+              }
+            </div>
+          </StyledContainer>
+        </StyledContainer>
+      </StyledPageContainer>
     );
   }
 }
+
+RequestLayer.propTypes = {
+  achievements: PropTypes.shape({}),
+  loading: PropTypes.string,
+};
 
 const mapStateToProps = state => ({
   achievements: state.app.playerAchievements.data,
