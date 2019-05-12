@@ -152,7 +152,7 @@ class Table extends React.Component {
       maxRows,
       paginated,
       placeholderMessage,
-      pageLength = 20,
+      pageLength = 25,
       hoverRowColumn,
       highlightFn,
       keyFn,
