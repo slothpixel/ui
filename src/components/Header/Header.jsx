@@ -88,9 +88,9 @@ class Header extends React.Component {
       small, strings,
     } = this.props;
     const navbarPages = [
-      <Link key="header_player" to="/player">Player</Link>,
-      <Link key="header_guild" to="/guild">Guild</Link>,
-      <Link key="header_leaderboards" to="/leaderboards">Leaderboards</Link>
+      <Link key="header_player" to="/players">Player</Link>,
+      <Link key="header_guild" to="/guilds">Guild</Link>,
+      <Link key="header_leaderboards" to="/leaderboards">Leaderboards</Link>,
     ];
 
     const burgerItems = [
@@ -144,7 +144,7 @@ class Header extends React.Component {
       </VerticalAlignToolbar>
     ); */
 
-    const SettingsGroup = ({ user }) => (
+    const SettingsGroup = () => (
       <VerticalAlignDropdown
         Button={IconButton}
         buttonProps={buttonProps}
