@@ -75,6 +75,7 @@ const ToolbarHeader = styled(Toolbar)`
 class Header extends React.Component {
   static propTypes = {
     small: PropTypes.bool,
+    navbarPages: PropTypes.shape([]),
     strings: PropTypes.shape({}),
   };
 
@@ -85,13 +86,8 @@ class Header extends React.Component {
 
   render() {
     const {
-      small, strings,
+      small, strings, navbarPages,
     } = this.props;
-    const navbarPages = [
-      <Link key="header_player" to="/players">Player</Link>,
-      <Link key="header_guild" to="/guilds">Guild</Link>,
-      <Link key="header_leaderboards" to="/leaderboards">Leaderboards</Link>,
-    ];
 
     const burgerItems = [
       // <AccountWidget key={0} />,
