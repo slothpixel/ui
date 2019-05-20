@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Table from '../Table';
 import Container from '../Container';
@@ -8,14 +6,14 @@ import { getLeaderboard } from '../../actions';
 import leaderboardColumns from './leaderboardColumns';
 
 
-const LeadeboardMenu = () => (
-  <div style={{
-    position: 'fixed', backgroundColor: 'black', height: '100%', width: '320px',
-  }}
-  >
-    <p>text</p>
-  </div>
-);
+// const LeadeboardMenu = () => (
+//   <div style={{
+//     position: 'fixed', backgroundColor: 'black', height: '100%', width: '320px',
+//   }}
+//   >
+//     <p>text</p>
+//   </div>
+// );
 
 const Items = ({
   data,

@@ -1,4 +1,3 @@
-import React from 'react';
 import { getLocalizedDate } from '../../../../utility';
 import { playerColumns } from '../../../Player/playerColumns';
 
