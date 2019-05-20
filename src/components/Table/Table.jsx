@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -70,6 +69,7 @@ class Table extends React.Component {
     customWidth: number,
     isBestValueInMatch: func,
     overflowAuto: bool,
+    className: string,
   };
 
   static renderSumRow({ columns, data }) {
@@ -78,7 +78,7 @@ class Table extends React.Component {
         {columns.map((column, colIndex) => {
           let total = 0;
           if (column.sumFn) {
-            const sumFn = (typeof column.sumFn === 'function') ? column.sumFn : (acc, row) => (acc + row[column.field]);
+            const sumFn = (typeof column.sumFn === 'function') ? column.sumFn : (acc, row) => (acc + (row[column.field] || 0));
             total = data.reduce(sumFn, null);
           }
 
@@ -127,20 +127,24 @@ class Table extends React.Component {
   };
 
   nextPage = () => {
-    this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
+    this.setState({
+      currentPage: this.state.currentPage + 1,
+    });
   };
 
   prevPage = () => {
-    // this.setState({ currentPage: this.state.currentPage - 1 });
-    this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
+    this.setState({
+      currentPage: this.state.currentPage - 1,
+    });
   };
 
   sortClick = (sortField, sortState, sortFn) => {
-    this.setState(prevState => ({
-      sortState: sortField === prevState.sortField ? SORT_ENUM.next(SORT_ENUM[prevState.sortState]) : SORT_ENUM[0],
+    const { state } = this;
+    this.setState({
+      sortState: sortField === state.sortField ? SORT_ENUM.next(SORT_ENUM[state.sortState]) : SORT_ENUM[0],
       sortField,
       sortFn,
-    }));
+    });
   };
 
   render() {
@@ -159,6 +163,7 @@ class Table extends React.Component {
       customWidth,
       isBestValueInMatch,
       overflowAuto,
+      className,
     } = this.props;
     const {
       sortState, sortField, sortFn, currentPage, scrolled,
@@ -196,7 +201,7 @@ class Table extends React.Component {
               && 'shrink'} ${overflowAuto && 'table-container-overflow-auto'}`}
               ref={this.setTableRef}
             >
-              <table>
+              <table className={className}>
                 <thead>
                   <TableHeader
                     columns={columns}
@@ -289,8 +294,9 @@ class Table extends React.Component {
                         if ((underline === 'max' || underline === 'min') && typeof isBestValueInMatch === 'function') {
                           style.textDecoration = isBestValueInMatch(field, row, underline) ? 'underline' : 'none';
                         }
+                        const tdStyle = fieldEl && fieldEl.type && fieldEl.type.tdStyle;
                         return (
-                          <td style={style} className={column.className}>
+                          <td style={{ ...style, ...tdStyle }} className={column.className}>
                             {fieldEl}
                           </td>
                         );

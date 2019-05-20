@@ -3,8 +3,8 @@ import constants from '../constants';
 
 export const StyledDiv = styled.div`
   margin-top: 15px;
-  margin-bottom: 15px;
-
+  margin-bottom: 2px;
+  margin-left: 3px;
   .winner {
     position: relative;
     bottom: 1px;
@@ -18,7 +18,6 @@ export const StyledDiv = styled.div`
     color: rgb(210, 210, 210);
     text-transform: uppercase;
   }
-
   .winner:after {
     right: 100%;
     top: 50%;
@@ -32,35 +31,31 @@ export const StyledDiv = styled.div`
     border-width: 8px;
     margin-top: -8px;
   }
-
   & svg {
-    vertical-align: middle;
-    height: 26px !important;
-    width: 26px !important;
+    height: 20px !important;
+    width: 20px !important;
+    position: relative;
     margin-right: 6px;
+    top: 2px;
     opacity: 0.8;
     fill: ${constants.textColorPrimary};
   }
-
   & a {
     color: ${constants.primaryTextColor};
     text-decoration: none;
-
     &:hover {
       color: ${constants.primaryLinkColor};
     }
   }
-
   & .title {
     font-size: 20px;
+    text-shadow: 2px 1px 2px black;
   }
-
   & .subtitle {
     margin-left: 5px;
     font-size: ${constants.fontSizeMedium};
     color: ${constants.colorMutedLight};
   }
-
   .sponsor-button {
     margin: 0px 5px;
     
@@ -89,7 +84,6 @@ export const StyledDiv = styled.div`
 export const TwoLineDiv = styled(StyledDiv)`
   text-align: center;
   padding: 10px 0 15px;
-
   & span:last-child {
     display: block;
     text-transform: lowercase;

@@ -63,7 +63,7 @@ class Leaderboards extends React.Component {
     }
 
     return (
-      <div style={{ display: 'flex' }}>
+      <div>
         <Items {...this.props} templateData={templateData} name={name} />
       </div>
     );

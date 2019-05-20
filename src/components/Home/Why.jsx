@@ -6,7 +6,7 @@ import { IconOpenSource, IconStats, IconCompass } from '../Icons';
 import constants from '../constants';
 
 const StyledDiv = styled.div`
-  margin: 50px auto 0;
+  margin: 50px auto 150px;
   text-align: center;
   max-width: 1920px;
   padding-bottom: 30px;
