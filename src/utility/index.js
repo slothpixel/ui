@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
+import React from 'react';
 import store from '../store';
+import { KDA } from '../components/Visualizations';
 
 export function addCommas(val) {
   if (typeof val !== 'number') return val;
@@ -25,6 +27,34 @@ export function abbreviateNumber(num) {
 
   return num.toFixed(0);
 }
+
+/*
+* Get stats for games
+* Pass a null in the fields array for a linebreak
+ */
+export const StatFields = ({ strings, fields, data }) => fields.map((field) => {
+  if (field === null) {
+    return <br />;
+  }
+  return (
+    <p>
+      <span style={{ fontWeight: 'bold' }}>{strings[`th_${field}`] || field}</span>
+      <span>
+        {`: ${addCommas(data[field])}`}
+      </span>
+    </p>
+  );
+});
+
+/**
+ * Transformations of table cell data to display values.
+ * These functions are intended to be used as the displayFn property in table columns.
+ * This is why they all take (row, col, field)
+ * */
+// TODO - these more complicated ones should be factored out into components
+export const transformations = {
+  kda: (row, col, field) => <KDA kills={field} deaths={row.deaths} assists={row.assists || 0} />,
+};
 
 export const defaultSort = (array, sortState, sortField, sortFn) => array.sort((a, b) => {
   const sortFnExists = typeof sortFn === 'function';

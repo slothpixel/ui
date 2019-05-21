@@ -1,48 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import styled from 'styled-components';
-// import constants from '../../../constants';
-// import { getPlayer } from '../../../../actions';
+import { Arena } from './Games';
 
-const Stats = () => (
-  <p>stats page</p>
-);
-
-/* const getData = (props) => {
-
-}; */
-
-class RequestLayer extends React.Component {
-  static propTypes = {
-    location: PropTypes.shape({
-      key: PropTypes.string,
-    }),
-    playerId: PropTypes.string,
-    strings: PropTypes.shape({}),
-  };
-
-  componentDidMount() {
-    // getData(this.props);
+const Stats = ({ loading, strings, player }) => {
+  if (loading) {
+    return null;
   }
+  return (
+    <div>
+      <Arena strings={strings} arenaData={player.stats.Arena} />
+    </div>
+  );
+};
 
-  /* componentDidUpdate(prevProps) {
-    if (this.props.playerId !== prevProps.playerId || this.props.location.key !== prevProps.location.key) {
-      getData(this.props);
-    }
-  } */
-
-  render() {
-    return <Stats {...this.props} />;
-  }
-}
+Stats.propTypes = {
+  location: PropTypes.shape({
+    key: PropTypes.string,
+  }),
+  strings: PropTypes.shape({}),
+  loading: PropTypes.bool,
+  player: PropTypes.shape({}),
+};
 
 const mapStateToProps = state => ({
+  loading: state.app.player.loading,
+  error: state.app.player.error,
+  player: state.app.player.data,
   strings: state.app.strings,
 });
 
-/* const mapDispatchToProps = dispatch => ({
-
-}); */
-
-export default connect(mapStateToProps)(RequestLayer);
+export default connect(mapStateToProps)(Stats);
