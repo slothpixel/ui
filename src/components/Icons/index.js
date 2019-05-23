@@ -5,3 +5,5 @@ export { default as IconMedium } from './Medium';
 export { default as IconStats } from './Stats';
 export { default as IconOpenSource } from './OpenSource';
 export { default as IconCompass } from './Compass';
+export { default as IconPlusSquare } from './PlusSquare';
+export { default as IconMinusSquare } from './MinusSquare';
