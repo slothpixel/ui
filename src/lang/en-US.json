@@ -43,6 +43,7 @@
   "th_keys": "Keys",
   "th_active_rune": "Active Rune",
   "th_level": "Level",
+  "th_experience": "Experience",
   "th_achievements": "Achievements",
   "th_quests": "Quests",
   "th_wins_total": "Total Wins",
@@ -70,6 +71,7 @@
   "heading_combat_levels": "Combat Levels",
   "heading_runes": "Runes",
 
+  "guild_guild": "Guild",
   "guild_members": "Members",
   "guild_legacy_rank": "Legacy Rank",
   "guild_created": "Created",
