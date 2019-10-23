@@ -11,7 +11,7 @@
     "material-ui": "^0.20.2",
     "nanoid": "^2.0.2",
     "prop-types": "^15.6.2",
-    "react": "^16.6.3",
+    "react": "^16.11.0",
     "react-content-loader": "^3.4.1",
     "react-dom": "^16.6.1",
     "react-ga": "^2.5.6",
