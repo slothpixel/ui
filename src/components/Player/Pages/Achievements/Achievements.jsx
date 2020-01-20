@@ -65,17 +65,31 @@ function getName(name = '') {
   return result;
 }
 
-function getAchievementContainer(type, game, achievementName) {
-  console.log(`${type} ${game} ${achievementName}`);
-  const { name } = achievementData[game][type][achievementName];
-  const { description } = achievementData[game][type][achievementName];
+function getAchievementContainer(type, game, achievementName, value) {
+  const achievement = achievementData[game][type][achievementName];
+  let { name, description } = achievement;
   let percent = 1;
   let progression = 'Completed!';
   if (type === 'tiered') {
-    percent = 0.33;
-    progression = `45/56 (${percent * 100}%)`;
-  } else {
-
+    let goal = 0;
+    let score = value;
+    let tier = 1;
+    for (let i = 0; i < 5; i += 1) {
+      goal = achievement.tiers[i].amount;
+      if (goal > score) {
+        break;
+      }
+      tier += 1;
+      score -= goal;
+    }
+    if (score > goal) score = goal;
+    // TODO - Add a separate function to handle edge case such as UHC's 'MOVING_UP'
+    description = description.replace('%s', addCommas(goal));
+    name += ` ${tier}`;
+    percent = (score === 0)
+      ? 0
+      : (score / goal);
+    progression = `${score}/${goal} (${Math.floor((score / goal) * 100)}%)`;
   }
   const height = 25;
   const imagePath = (type === 'one_time')
@@ -125,7 +139,6 @@ class MenuItems extends React.Component {
   }
 
   handleClick = (name) => {
-    console.log(`Clicked ${name}`);
     this.props.onSelectedGame(name);
     this.setState({
       active: name,
@@ -249,10 +262,8 @@ class RequestLayer extends React.Component {
   };
 
   render() {
-    const { achievements } = this.props;
-    const { loading } = this.props;
+    const { loading, achievements } = this.props;
     const { game } = this.state;
-    console.log(game);
     if (loading) {
       return null;
     }
@@ -271,18 +282,23 @@ class RequestLayer extends React.Component {
             <MenuItems games={achievements.games} onSelectedGame={this.handleGameChange} />
             <div />
           </StyledHeaderContainer>
-          { console.log(achievements)}
           <StyledContainer>
             <div style={{ flexDirection: 'column', paddingLeft: '20px' }}>
               {
-                 Object.keys(achievements.games[game].tiered).map(key => (
-                   getAchievementContainer('tiered', game, key)
-                 ))
+                 Object.keys(achievements.games[game].tiered).map((key) => {
+                   if (!(key in achievementData[game].tiered)) return null;
+                   return (
+                     getAchievementContainer('tiered', game, key, achievements.games[game].tiered[key])
+                   );
+                 })
               }
               {
-                Object.keys(achievements.games[game].one_time).map(key => (
-                  getAchievementContainer('one_time', game, achievements.games[game].one_time[key])
-                ))
+                achievements.games[game].one_time.map((key, index) => {
+                  if (!(key in achievementData[game].one_time)) return null;
+                  return (
+                    getAchievementContainer('one_time', game, achievements.games[game].one_time[index])
+                  );
+                })
               }
             </div>
           </StyledContainer>
