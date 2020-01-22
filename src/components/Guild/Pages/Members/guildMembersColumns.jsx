@@ -10,8 +10,11 @@ const memberColumns = strings => [{
   ),
 }, {
   displayName: strings.th_rank,
-  field: 'rank',
+  field: 'rank_priority',
   sortFn: true,
+  displayFn: row => (
+    row.rank
+  ),
 }, {
   displayName: strings.th_last_login,
   field: 'last_login',

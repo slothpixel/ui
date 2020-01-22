@@ -25,10 +25,17 @@ function RequestLayer(props) {
 }
 
 function transformMembers(data) {
-  // TODO - Change rank to object with reverse priority so ranks can be sorted properly
+  data.ranks.push({ name: 'Guild Master', priority: 999 });
+  data.ranks.sort((a, b) => a.priority - b.priority);
+  const ranks = data.ranks.map((rank, i) => {
+    // eslint-disable-next-line no-param-reassign
+    rank.priority = i;
+    return rank;
+  });
   const arr = [];
   data.members.forEach((member) => {
     const newMember = Object.assign(member, member.profile);
+    newMember.rank_priority = ranks.filter(r => r.name === member.rank)[0].priority;
     delete newMember.profile;
     arr.push(newMember);
   });
