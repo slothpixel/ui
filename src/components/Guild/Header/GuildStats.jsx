@@ -77,6 +77,7 @@ export const GuildStatsCards = ({
   error,
   compact,
   level,
+  exp,
   members,
   created,
   description,
@@ -106,6 +107,10 @@ export const GuildStatsCards = ({
             title={strings.guild_legacy_rank}
           />
           <GuildStatsCard
+            subtitle={<div className="colorDarkAqua">{addCommas(exp)}</div>}
+            title={strings.th_exp}
+          />
+          <GuildStatsCard
             subtitle={<div className="colorWhite">{getLocalizedDate(created)}</div>}
             title={strings.guild_created}
           />
@@ -121,7 +126,7 @@ export const GuildStatsCards = ({
 };
 
 const {
-  string, number, bool, shape, array,
+  string, number, bool, shape, arrayOf,
 } = PropTypes;
 
 GuildStatsCards.propTypes = {
@@ -129,7 +134,8 @@ GuildStatsCards.propTypes = {
   error: bool,
   compact: bool,
   level: number,
-  members: array,
+  exp: number,
+  members: arrayOf(shape({})),
   created: number,
   legacy_ranking: number,
   description: string,

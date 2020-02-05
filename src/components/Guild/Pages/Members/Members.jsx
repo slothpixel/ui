@@ -25,7 +25,6 @@ function RequestLayer(props) {
 }
 
 function transformMembers(data) {
-  data.ranks.push({ name: 'Guild Master', priority: 999 });
   data.ranks.sort((a, b) => a.priority - b.priority);
   const ranks = data.ranks.map((rank, i) => {
     // eslint-disable-next-line no-param-reassign
@@ -35,7 +34,7 @@ function transformMembers(data) {
   const arr = [];
   data.members.forEach((member) => {
     const newMember = Object.assign(member, member.profile);
-    newMember.rank_priority = ranks.filter(r => r.name === member.rank)[0].priority;
+    newMember.rank_priority = (ranks.filter(r => r.name === member.rank)[0] || {}).priority || 1;
     delete newMember.profile;
     arr.push(newMember);
   });
