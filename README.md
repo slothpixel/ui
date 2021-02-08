@@ -1,3 +1,5 @@
+# Repository archived -  development will continue here: https://github.com/slothpixel/web
+
 # ui
 
 <p>
